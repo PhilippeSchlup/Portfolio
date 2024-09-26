@@ -1,0 +1,106 @@
+html, body{
+    background-color: black;
+
+}
+
+/*_________divs_____*/
+.center{
+    display: flex;
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: center; 
+    height: 100%; 
+    color: aliceblue;
+    padding-top: 20px; 
+    text-align: center; 
+}
+
+.inside-center{
+    text-align: center;
+    height: 100%;
+    margin-top: 10%;
+}
+
+
+/*_______Texts_____*/
+
+.title{
+    color: #1a1a1a; 
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 2.5rem;
+    transition: color 1.5s ease; 
+    animation: blinkTextColor 3s infinite;
+}
+
+@keyframes blinkTextColor {
+    0%, 100% {
+        color: aliceblue; 
+    }
+    50% {
+        color: #1a1a1a;
+    }
+}
+
+.subtitle{
+    color: aliceblue;
+    font-family: 'Poppins', sans-serif;
+    opacity: 0.4;
+}
+
+.subtitle:hover{
+    opacity: 1.0;
+    transition-duration: 0.5s;
+}
+
+.subtitle:not(:hover){
+    opacity: 0.4;
+    transition-duration: 0.5s;
+}
+
+/*_______Images_____*/
+
+.lamp{
+    transform: rotate(180deg);
+    filter: drop-shadow(0 -3rem 4rem #fff9ab);
+    animation: blinkLamp 3s infinite;
+}
+
+@keyframes blinkLamp {
+    0%, 100% {
+        opacity: 1; 
+        filter: drop-shadow(0 -2rem 2.5rem #f7ef84); 
+    }
+    50% {
+        opacity: 0.4; 
+        filter: drop-shadow(0 -2rem 1rem #f7ef84);
+    }
+}
+
+.lamp-div{
+    display: flex;
+    justify-content: center; 
+    width: 100%; 
+    margin-bottom: 20px;
+    
+}
+
+/*_________Effects_____*/
+
+.fade-out {
+    animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1; 
+    }
+    to {
+        opacity: 0; 
+    }
+}
+
+body{
+
+    background-image:  url("/img/semiconductor.png");
+}
