@@ -8,11 +8,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
 
 
+    function applyTheme(theme) {
+        if (theme === 'dark') {
+            body.classList.add('dark-mode');
+            toggleCheckbox.checked = true;
+        } else {
+            body.classList.remove('dark-mode');
+            toggleCheckbox.checked = false; 
+        }
+    }
+
+    // Retrieve the saved theme from localStorage on page load
+    const savedTheme = localStorage.getItem('theme');
+    applyTheme(savedTheme || 'light'); // Default to 'light' if nothing is saved
+
+    // Add event listener for the toggle switch
     toggleCheckbox.addEventListener('change', () => {
-
-        body.classList.toggle('dark-mode');
+        if (toggleCheckbox.checked) {
+            body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark'); 
+        } else {
+            body.classList.remove('dark-mode');
+            localStorage.setItem('theme', 'light'); 
+        }
     });
-
     const faders = document.querySelectorAll('.fade-in-effect');
     
     const appearOptions = {
@@ -176,7 +195,7 @@ function updateContentForLanguage(lang) {
                     <a href="https://www.linkedin.com/in/philippe-schlup-78651a235/"><i class="fa-brands fa-linkedin responsive-icon"></i></a>
                     <a href="https://github.com/PhilippeSchlup"><i class="fa-brands fa-github responsive-icon"></i></a>
                     <a href="mailto:philippe.schlup@gmail.com"><i class="fas fa-envelope responsive-icon"></i></a>
-                    <i class="fas fa-phone responsive-icon"></i>
+                    <a href="tel:+351910194788"><i class="fas fa-phone responsive-icon"></i></a>
                 `
             },
             downloadCV: "Download CV",
@@ -219,7 +238,7 @@ function updateContentForLanguage(lang) {
                     <a href="https://www.linkedin.com/in/philippe-schlup-78651a235/"><i class="fa-brands fa-linkedin responsive-icon"></i></a>
                     <a href="https://github.com/PhilippeSchlup"><i class="fa-brands fa-github responsive-icon"></i></a>
                     <a href="mailto:philippe.schlup@gmail.com"><i class="fas fa-envelope responsive-icon"></i></a>
-                    <i class="fas fa-phone responsive-icon"></i>
+                    <a href="tel:+351910194788"><i class="fas fa-phone responsive-icon"></i></a>
                 `
             },
             downloadCV: "Descargar CV",
@@ -263,7 +282,7 @@ function updateContentForLanguage(lang) {
                     <a href="https://www.linkedin.com/in/philippe-schlup-78651a235/"><i class="fa-brands fa-linkedin responsive-icon"></i></a>
                     <a href="https://github.com/PhilippeSchlup"><i class="fa-brands fa-github responsive-icon"></i></a>
                     <a href="mailto:philippe.schlup@gmail.com"><i class="fas fa-envelope responsive-icon"></i></a>
-                    <i class="fas fa-phone responsive-icon"></i>
+                    <a href="tel:+351910194788"><i class="fas fa-phone responsive-icon"></i></a>
                 `
             },
             downloadCV: "Télécharger le CV",
@@ -307,7 +326,7 @@ function updateContentForLanguage(lang) {
                     <a href="https://www.linkedin.com/in/philippe-schlup-78651a235/"><i class="fa-brands fa-linkedin responsive-icon"></i></a>
                     <a href="https://github.com/PhilippeSchlup"><i class="fa-brands fa-github responsive-icon"></i></a>
                     <a href="mailto:philippe.schlup@gmail.com"><i class="fas fa-envelope responsive-icon"></i></a>
-                    <i class="fas fa-phone responsive-icon"></i>
+                    <a href="tel:+351910194788"><i class="fas fa-phone responsive-icon"></i></a>
                 `
             },
             downloadCV: "Baixar CV",

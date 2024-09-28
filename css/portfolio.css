@@ -81,7 +81,8 @@ html {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
     transition: background-color 0.3s ease, transform 0.3s ease; 
     outline: none; 
-    margin: 20px; 
+    margin: 50px; 
+
 }
 
 
@@ -213,22 +214,17 @@ input:checked + .slider:before {
 .theme-label {
     margin-left: 10px;
     font-size: 16px;
+    color: #f8eeee;
 }
 
-.navbar {
-    background-color: #fff;
-}
 
 #headerNav {
-    background-color: #95c4eb; /* Light background color */
+    background-color: #47a0e9; /* Light background color */
 }
 
-.nav-link {
-    color: #ffffff; /* Dark text color for light mode */
-}
 
 footer {
-    background-color: #95c4eb;
+    background-color: #47a0e9;
 }
 
 .responsive-icon{
@@ -248,10 +244,6 @@ footer {
     color: #ffffff; /* Light title */
 }
 
-
-.dark-mode .navbar {
-    background-color: #333;
-}
 
 .dark-mode #headerNav {
     background-color: #333; 
