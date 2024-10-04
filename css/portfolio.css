@@ -360,8 +360,8 @@ footer {
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     z-index: 9999;
-    max-width: 80%;
-    max-height: 80%;
+    width: 400px;
+    height: 400px;
     overflow: auto;
 }
 
@@ -371,7 +371,7 @@ footer {
     top: 5px;
     right: 5px;
     background: none;
-    color: rgb(0, 0, 0);
+    color: #ccc;
     border: none;
     padding: 5px 10px;
     cursor: pointer;

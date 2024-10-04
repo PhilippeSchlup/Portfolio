@@ -62,8 +62,10 @@ function topFunction() {
 }
 
 const imageFilenames = [
-    "cp_certificate.png",
-    "aws_cpp.png",
+    "aws_ccp.png",
+    "ccp_certificate.png",
+    "aws_aip.png",
+    "aip_certificate.png"
 ];
 
 // Function to create the cards dynamically
