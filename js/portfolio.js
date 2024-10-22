@@ -123,6 +123,89 @@ function showImage(filename) {
 }
 
 
+
+const projects = [
+    {
+        img: 'img/chatapp.png', // Image source
+        alt: 'Chat Application',
+        description: 'This is a chat application built in React and Firebase featuring real-time messaging. In that app you can add friends and message them on the Global Chat or privately.',
+        link: 'https://philippeschlup.github.io/chatapp/'
+    },
+];
+
+// Function to create project cards dynamically
+function createProjectCards() {
+    console.log('Creating project cards...'); // Log when the function starts
+    const container = document.getElementById('project-container');
+
+    if (!container) {
+        console.error('Container not found! Check if the project-container ID is correct.');
+        return; // Stop execution if the container is not found
+    }
+
+    projects.forEach((project, index) => {
+        console.log(`Creating card for project ${index + 1}:`, project); // Log project details
+        
+        const projectWrapper = document.createElement('div');
+        projectWrapper.className = 'project-wrapper';
+
+        const img = document.createElement('img');
+        img.className = 'projects-imgs';
+        img.src = project.img; 
+        img.alt = project.alt; 
+
+        const iconWrapper = document.createElement('div');
+        iconWrapper.className = 'icon-wrapper';
+
+        const infoIcon = document.createElement('i');
+        infoIcon.className = 'fas fa-info-circle';
+        infoIcon.onclick = function() {
+            console.log(`Showing info for project: ${project.alt}`); // Log info icon click
+            showProjectInfo(project.description, projectWrapper);
+        };
+
+        const linkIcon = document.createElement('a');
+        linkIcon.href = project.link; 
+        linkIcon.target = "_blank"; // Open link in a new tab
+        const linkElement = document.createElement('i');
+        linkElement.className = 'fas fa-link';
+        linkIcon.appendChild(linkElement);
+
+        // Append icons to the wrapper
+        iconWrapper.appendChild(infoIcon);
+        iconWrapper.appendChild(linkIcon);
+        projectWrapper.appendChild(img);
+        projectWrapper.appendChild(iconWrapper);
+
+        // Project info div
+        const infoDiv = document.createElement('div');
+        infoDiv.className = 'project-info';
+        infoDiv.textContent = project.description;
+
+        projectWrapper.appendChild(infoDiv);
+        container.appendChild(projectWrapper);
+    });
+
+    console.log('Project cards created successfully.'); // Log when the function ends
+}
+
+// Function to show project info
+function showProjectInfo(description, projectWrapper) {
+    const infoDiv = projectWrapper.querySelector('.project-info');
+    infoDiv.style.display = infoDiv.style.display === 'none' ? 'block' : 'none';
+    console.log(`Project info toggled: ${infoDiv.style.display}`); // Log the visibility state
+}
+
+// Wait for the DOM to be fully loaded before running the createProjectCards function
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM fully loaded and parsed.'); // Log when DOM is ready
+    createProjectCards();
+    document.getElementById("projects").classList.add("show"); // Add fade-in effect
+    console.log('Fade-in effect added to projects section.'); // Log fade-in effect addition
+});
+
+
+
 function dropFunct() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -187,6 +270,10 @@ function updateContentForLanguage(lang) {
                 title: "Skills",
                 text: ["C programming", "Java programming", "AWS", "Object-Oriented Programming", "Web development", "Problem Solving", "Python", "Mathematics", "Physics"]
             },
+            projects: {
+                title: "Projects",
+                text: ""
+            },
             certifications: {
                 title: "Certifications",
                 text: ""
@@ -205,6 +292,7 @@ function updateContentForLanguage(lang) {
             darkMode: "Dark Mode",
             navbar: {
                 skills: "Skills",
+                projects: "Projects",
                 certifications: "Certifications",
                 about: "About me",
                 languages: "Languages",
@@ -229,6 +317,10 @@ function updateContentForLanguage(lang) {
             skills: {
                 title: "Habilidades",
                 text: ["Programación en C", "Programación en Java", "AWS", "Programación Orientada a Objetos", "Desarrollo Web", "Resolución de Problemas", "Python", "Matemáticas", "Física"]
+            },
+            projects: {
+                title: "Proyectos",
+                text: ""
             },            
             certifications: {
                 title: "Certificaciones",
@@ -248,6 +340,7 @@ function updateContentForLanguage(lang) {
             darkMode: "Modo Oscuro",
             navbar: {
                 skills: "Habilidades",
+                projects: "Proyectos",
                 certifications: "Certificaciones",
                 about: "Sobre mí",
                 languages: "Idiomas",
@@ -274,6 +367,10 @@ function updateContentForLanguage(lang) {
                 title: "Compétences",
                 text: ["Programmation en C", "Programmation en Java", "AWS", "Programmation Orientée Objet", "Développement Web", "Résolution de Problèmes", "Python", "Mathématiques", "Physique"]
             },
+            projects: {
+                title: "Projets",
+                text: ""
+            },
             certifications: {
                 title: "Certifications",
                 text: ""
@@ -292,6 +389,7 @@ function updateContentForLanguage(lang) {
             darkMode: "Mode Sombre",
             navbar: {
                 skills: "Compétences",
+                projects: "Projets",
                 certifications: "Certifications",
                 about: "À propos de moi",
                 languages: "Langues",
@@ -317,6 +415,10 @@ function updateContentForLanguage(lang) {
             skills: {
                 title: "Competências",
                 text: ["Programação em C", "Programação em Java", "AWS", "Programação Orientada a Objetos", "Desenvolvimento Web", "Resolução de Problemas", "Python", "Matemática", "Física"]
+            },
+            projects: {
+                title: "Projetos",
+                text: ""
             },            
             certifications: {
                 title: "Certificações",
@@ -336,6 +438,7 @@ function updateContentForLanguage(lang) {
             darkMode: "Modo Escuro",
             navbar: {
                 skills: "Competências",
+                projects: "Projetos",
                 certifications: "Certificações",
                 about: "Sobre mim",
                 languages: "Línguas",
@@ -376,6 +479,8 @@ function updateContentForLanguage(lang) {
         listItem.textContent = skill;
         skillsList.appendChild(listItem);
     });
+
+    document.getElementById("projects").querySelector(".title").innerText = content.projects.title;
 
     document.getElementById("certifications").querySelector(".title").innerText = content.certifications.title;
     // If you have content in certifications, you can update it here.
