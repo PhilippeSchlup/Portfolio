@@ -583,24 +583,32 @@ footer p {
     }
 }
 
-.container-project{
+.container-project {
     max-width: 100%;
+    display: flex; /* Enables flexbox layout */
+    flex-wrap: wrap; /* Allows wrapping of items */
+    justify-content: center; /* Spaces items evenly */
 }
 
-.project-wrapper {
-    margin-top: 50px;
+.project-wrapper {  
+    margin: 20px;
+    margin-top: 50px; /* Space between project cards */
     position: relative;
-    display: inline-block;
+    display: flex; /* Use flex to center items */
+    flex-direction: column; /* Stack items vertically */
+    justify-content: center;
+    align-items: center;
     max-width: 500px;
 }
 
 .projects-imgs {
-    width: 100%;
-    height: auto;
+    width: 495px;
+    height: 300px;
     transition: filter 0.3s, transform 0.3s;
     border-radius: 5px;
     display: block;
     object-fit: cover;
+    margin: 10px 0; /* Space above and below images */
 }
 
 
@@ -637,10 +645,9 @@ footer p {
 
 /* Position the project info div absolutely inside the project wrapper */
 .project-info {
-    position: absolute;
-    bottom: 0; /* Align it at the bottom */
-    left: 0;
-    right: 0;
+    position: fixed;
+    margin-top: 10px;
+    max-width: 500px;
     background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
     color: #333;
     padding: 10px;

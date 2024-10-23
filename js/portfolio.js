@@ -131,6 +131,12 @@ const projects = [
         description: 'This is a chat application built in React and Firebase featuring real-time messaging. In that app you can add friends and message them on the Global Chat or privately.',
         link: 'https://philippeschlup.github.io/chatapp/'
     },
+    {
+        img: 'img/ipm.png', // Image source
+        alt: 'EShop',
+        description: 'This is a e-shop application',
+        link: 'https://github.com/PhilippeSchlup/techtron'
+    },
 ];
 
 // Function to create project cards dynamically
