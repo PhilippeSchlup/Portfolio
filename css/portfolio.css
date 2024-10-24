@@ -603,7 +603,9 @@ footer p {
 .projects-imgs {
     width: 60vw;
     max-width: 500px;
+    height: auto;
     max-height: 320px;
+    aspect-ratio: 25/16;
     transition: filter 0.3s, transform 0.3s;
     border-radius: 5px;
     display: block;
