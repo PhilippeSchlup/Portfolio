@@ -204,19 +204,21 @@ function showProjectInfo(description, projectWrapper) {
     
     console.log(`Project info toggled: ${infoDiv.style.display}`); // Log the visibility state
 
-    // Find the next project in the DOM
-    const nextProject = projectWrapper.nextElementSibling;
+    if (window.innerWidth < 1559) {
+        // Find the next project in the DOM
+        const nextProject = projectWrapper.nextElementSibling;
 
-    if (nextProject && nextProject.classList.contains('project-wrapper')) {
-        if (isHidden) {
-            // Get the actual height of the project-info element
-            const infoHeight = infoDiv.offsetHeight;
-            
-            // Apply the margin-top equal to the height of the project-info + some additional space
-            nextProject.style.marginTop = `${infoHeight + 20}px`; // Add 20px as extra space
-        } else {
-            // Reset the margin-top when project-info is hidden
-            nextProject.style.marginTop = '50px';
+        if (nextProject && nextProject.classList.contains('project-wrapper')) {
+            if (isHidden) {
+                // Get the actual height of the project-info element
+                const infoHeight = infoDiv.offsetHeight;
+
+                // Apply the margin-top equal to the height of the project-info + some additional space
+                nextProject.style.marginTop = `${infoHeight + 20}px`; // Add 20px as extra space
+            } else {
+                // Reset the margin-top when project-info is hidden
+                nextProject.style.marginTop = '50px';
+            }
         }
     }
 }
