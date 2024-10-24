@@ -592,23 +592,23 @@ footer p {
 
 .project-wrapper {  
     margin: 20px;
-    margin-top: 50px; /* Space between project cards */
+    margin-top: 0;
     position: relative;
-    display: flex; /* Use flex to center items */
-    flex-direction: column; /* Stack items vertically */
     justify-content: center;
     align-items: center;
     max-width: 500px;
+    margin-top: 50px;
 }
 
 .projects-imgs {
-    width: 495px;
-    height: 300px;
+    width: 60vw;
+    max-width: 500px;
+    max-height: 320px;
     transition: filter 0.3s, transform 0.3s;
     border-radius: 5px;
     display: block;
     object-fit: cover;
-    margin: 10px 0; /* Space above and below images */
+   
 }
 
 
@@ -646,7 +646,9 @@ footer p {
 /* Position the project info div absolutely inside the project wrapper */
 .project-info {
     position: fixed;
+    justify-content: left;
     margin-top: 10px;
+    width: 60vw;
     max-width: 500px;
     background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
     color: #333;
@@ -659,4 +661,8 @@ footer p {
 
 .project-wrapper.show-info .project-info {
     display: block;
+}
+
+.next-project-margin {
+    margin-top: 100px; /* Adjust this value to control the space */
 }

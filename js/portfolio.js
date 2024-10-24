@@ -135,7 +135,7 @@ const projects = [
         img: 'img/ipm.png', // Image source
         alt: 'EShop',
         description: 'This is a e-shop application',
-        link: 'https://github.com/PhilippeSchlup/techtron'
+        link: 'https://philippeschlup.github.io/techtron/'
     },
 ];
 
@@ -195,12 +195,34 @@ function createProjectCards() {
     console.log('Project cards created successfully.'); // Log when the function ends
 }
 
-// Function to show project info
 function showProjectInfo(description, projectWrapper) {
     const infoDiv = projectWrapper.querySelector('.project-info');
-    infoDiv.style.display = infoDiv.style.display === 'none' ? 'block' : 'none';
+
+    // Toggle display of project-info
+    const isHidden = infoDiv.style.display === 'none' || infoDiv.style.display === '';
+    infoDiv.style.display = isHidden ? 'block' : 'none';
+    
     console.log(`Project info toggled: ${infoDiv.style.display}`); // Log the visibility state
+
+    // Find the next project in the DOM
+    const nextProject = projectWrapper.nextElementSibling;
+
+    if (nextProject && nextProject.classList.contains('project-wrapper')) {
+        if (isHidden) {
+            // Get the actual height of the project-info element
+            const infoHeight = infoDiv.offsetHeight;
+            
+            // Apply the margin-top equal to the height of the project-info + some additional space
+            nextProject.style.marginTop = `${infoHeight + 20}px`; // Add 20px as extra space
+        } else {
+            // Reset the margin-top when project-info is hidden
+            nextProject.style.marginTop = '50px';
+        }
+    }
 }
+
+
+
 
 // Wait for the DOM to be fully loaded before running the createProjectCards function
 document.addEventListener('DOMContentLoaded', () => {
