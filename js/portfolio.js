@@ -137,6 +137,12 @@ const projects = [
         description: 'This is a e-shop application',
         link: 'https://philippeschlup.github.io/techtron/'
     },
+    {
+        img: 'img/random_forest.png', // Image source
+        alt: 'random_forest',
+        description: 'This is a random forest mode to predict housing prices in California',
+        link: 'https://random-forest-housing-model.onrender.com/'
+    },
 ];
 
 // Function to create project cards dynamically
@@ -201,37 +207,61 @@ function showProjectInfo(description, projectWrapper) {
     // Toggle display of project-info
     const isHidden = infoDiv.style.display === 'none' || infoDiv.style.display === '';
     infoDiv.style.display = isHidden ? 'block' : 'none';
-    
+
     console.log(`Project info toggled: ${infoDiv.style.display}`); // Log the visibility state
 
-    if (window.innerWidth < 1559) {
-        // Find the next project in the DOM
-        const nextProject = projectWrapper.nextElementSibling;
+    // Get the container of all project elements
+    const container = document.getElementById('project-container');
+    const allProjects = Array.from(container.getElementsByClassName('project-wrapper'));
 
-        if (nextProject && nextProject.classList.contains('project-wrapper')) {
-            if (isHidden) {
-                // Get the actual height of the project-info element
-                const infoHeight = infoDiv.offsetHeight;
+    // Find the index of the clicked project
+    const clickedProjectIndex = allProjects.indexOf(projectWrapper);
 
-                // Apply the margin-top equal to the height of the project-info + some additional space
-                nextProject.style.marginTop = `${infoHeight + 20}px`; // Add 20px as extra space
-            } else {
-                // Reset the margin-top when project-info is hidden
-                nextProject.style.marginTop = '50px';
-            }
+    // Determine which projects to apply margin to based on screen size
+    if (window.innerWidth >= 1559) {
+        // Screen is large: apply margin to projects two rows down (indexes +2 and +3)
+        const nextRowIndex1 = clickedProjectIndex%2==0? clickedProjectIndex + 2: clickedProjectIndex + 1;
+        const nextRowIndex2 = clickedProjectIndex%2==0? clickedProjectIndex + 3: clickedProjectIndex + 2;
+
+        // Only apply margin if the next row projects exist
+        if (nextRowIndex1 < allProjects.length) {
+            adjustMargin(allProjects[nextRowIndex1], isHidden, infoDiv);
+        }
+        if (nextRowIndex2 < allProjects.length) {
+            adjustMargin(allProjects[nextRowIndex2], isHidden, infoDiv);
+        }
+    } else {
+        // Screen is small: apply margin to the project directly below (index +1)
+        const nextProjectIndex = clickedProjectIndex + 1;
+
+        // Only apply margin if the next project exists
+        if (nextProjectIndex < allProjects.length) {
+            adjustMargin(allProjects[nextProjectIndex], isHidden, infoDiv);
         }
     }
 }
 
+// Helper function to adjust margin based on infoDiv visibility
+function adjustMargin(project, isInfoVisible, infoDiv) {
+    if (isInfoVisible) {
+        // Get the actual height of the project-info element
+        const infoHeight = infoDiv.offsetHeight;
 
+        // Apply the margin-top to the project below the clicked one
+        project.style.marginTop = `${infoHeight + 20}px`; 
+    } else {
+        // Remove the margin-top style when project-info is hidden
+        project.style.marginTop = '';
+    }
+}
 
 
 // Wait for the DOM to be fully loaded before running the createProjectCards function
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM fully loaded and parsed.'); // Log when DOM is ready
+    console.log('DOM fully loaded and parsed.'); 
     createProjectCards();
-    document.getElementById("projects").classList.add("show"); // Add fade-in effect
-    console.log('Fade-in effect added to projects section.'); // Log fade-in effect addition
+    document.getElementById("projects").classList.add("show"); 
+    console.log('Fade-in effect added to projects section.'); 
 });
 
 
@@ -258,7 +288,7 @@ function getLanguageFromHash() {
 // Change the language and update the page URL
 function changeLanguage(lang) {
     window.location.hash = lang; // Update the URL hash
-    setLanguage(); // Update the content
+    setLanguage();
 }
 
 // Update the page based on the language selected
@@ -275,7 +305,6 @@ function setLanguage() {
     const selectedLanguageText = languageMap[lang] || 'English';
     document.getElementById("selectedLanguage").innerHTML = `${selectedLanguageText} <i class="fa fa-caret-down"></i>`;
 
-    // Update content based on language
     updateContentForLanguage(lang);
 }
 
@@ -489,15 +518,15 @@ function updateContentForLanguage(lang) {
 
     content.languages.text.forEach(({ language, proficiency }) => {
         const listItem = document.createElement('li');
-        listItem.textContent = language; // Add language name
+        listItem.textContent = language;
         
         // Create a proficiency badge
         const proficiencyBadge = document.createElement('span');
         proficiencyBadge.className = 'proficiency-badge';
-        proficiencyBadge.textContent = proficiency; // Add proficiency level
+        proficiencyBadge.textContent = proficiency; 
         
-        listItem.appendChild(proficiencyBadge); // Append badge to list item
-        languagesList.appendChild(listItem); // Append list item to the list
+        listItem.appendChild(proficiencyBadge); 
+        languagesList.appendChild(listItem);
     });
 
     document.getElementById("skills").querySelector(".title").innerText = content.skills.title;
@@ -513,7 +542,6 @@ function updateContentForLanguage(lang) {
     document.getElementById("projects").querySelector(".title").innerText = content.projects.title;
 
     document.getElementById("certifications").querySelector(".title").innerText = content.certifications.title;
-    // If you have content in certifications, you can update it here.
 
     document.getElementById("contacts").querySelector(".title").innerText = content.contacts.title;
     document.getElementById("contacts").querySelector(".text-div").innerHTML = content.contacts.text;
@@ -522,7 +550,7 @@ function updateContentForLanguage(lang) {
     document.getElementById("downloadCV").innerText = content.downloadCV;
 
     // Update the theme switcher text
-    document.getElementById("themeLabel").innerText = content.darkMode; // Default to Light Mode
+    document.getElementById("themeLabel").innerText = content.darkMode;
 
 
     // Update navbar items
@@ -543,7 +571,7 @@ document.addEventListener('DOMContentLoaded', setLanguage);
 // Also call setLanguage whenever the hash in the URL changes
 window.addEventListener('hashchange', setLanguage);
 
-// Example function to update the theme switcher
+// Function to update the theme switcher
 document.getElementById('checkbox').addEventListener('change', (event) => {
     if (event.target.checked) {
         document.getElementById('themeLabel').innerText = contentMap[lang].darkMode;

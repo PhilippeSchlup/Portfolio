@@ -585,9 +585,9 @@ footer p {
 
 .container-project {
     max-width: 100%;
-    display: flex; /* Enables flexbox layout */
-    flex-wrap: wrap; /* Allows wrapping of items */
-    justify-content: center; /* Spaces items evenly */
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: center; 
 }
 
 .project-wrapper {  
@@ -652,10 +652,10 @@ footer p {
     margin-top: 10px;
     width: 60vw;
     max-width: 500px;
-    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent background */
+    background-color: rgba(255, 255, 255, 0.9); 
     color: #333;
     padding: 10px;
-    display: none; /* Hidden by default */
+    display: none; 
     font-family: 'Poppins', sans-serif;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
@@ -666,5 +666,24 @@ footer p {
 }
 
 .next-project-margin {
-    margin-top: 100px; /* Adjust this value to control the space */
+    margin-top: 100px;
+}
+
+.project-wrapper {
+    transition: margin-top 0.3s ease-in-out; 
+}
+
+@media (max-width: 1559px) {
+    .project-wrapper {
+        margin-top: 50px; /* Default margin top */
+    }
+}
+
+@media (min-width: 1560px) {
+    .container-project{
+        margin-top: 50px;
+    }
+    .project-wrapper {
+        margin-top: 0px; /* No extra margin for large screens */
+    }
 }
