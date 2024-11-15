@@ -140,8 +140,14 @@ const projects = [
     {
         img: 'img/random_forest.png', // Image source
         alt: 'random_forest',
-        description: 'This is a random forest mode to predict housing prices in California',
+        description: 'This is a random forest model to predict housing prices in California',
         link: 'https://random-forest-housing-model.onrender.com/'
+    },
+    {
+        img: 'img/sgd_model.png', // Image source
+        alt: 'sgd_model',
+        description: 'This is a SGD Classifier model to predict numbers',
+        link: 'https://github.com/PhilippeSchlup/Number-Identifier'
     },
 ];
 
