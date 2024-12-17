@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const pdfUrl = 'pdf/cv.pdf'; 
         const link = document.createElement('a');
         link.href = pdfUrl;
-        link.download = 'pdf/Philippe_Schlup_CV.pdf';
+        link.download = 'pdf/CV_Philippe_Schlup_en.pdf';
         link.click();
     });
 });
