@@ -65,7 +65,9 @@ const imageFilenames = [
     "aws_ccp.png",
     "ccp_certificate.png",
     "aws_aip.png",
-    "aip_certificate.png"
+    "aip_certificate.png",
+    "aws_saa.png",
+    "saa_certificate.png",
 ];
 
 // Function to create the cards dynamically

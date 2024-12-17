@@ -360,7 +360,7 @@ footer {
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     z-index: 9999;
-    width: 400px;
+    width: auto;
     height: 400px;
     overflow: auto;
 }
@@ -379,8 +379,11 @@ footer {
 
 
 .image-container img {
-    max-width: 100%;
-    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+    vertical-align: middle;
 }
 
 /*_____ Footer_____*/
